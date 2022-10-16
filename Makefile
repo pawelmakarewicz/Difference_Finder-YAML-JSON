@@ -5,3 +5,5 @@ gendiff:
 publish:
 	npm publish --dry-run
 .PHONY: gendiff
+lint:
+	npx eslint .
