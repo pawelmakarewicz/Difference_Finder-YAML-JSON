@@ -7,5 +7,7 @@ publish:
 lint:
 	npx eslint .
 test:
-	npm test 
+	npm test
+test-coverage:
+	npx jest --coverage
 .PHONY: gendiff
