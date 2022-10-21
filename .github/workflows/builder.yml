@@ -11,6 +11,9 @@ jobs:
       - run: make lint
       - run: make test
       - run: make test-coverage
-      - uses: codecov/codecov-action@v3
+      - uses: paambaati/codeclimate-action@v3.0.0
+        # Add Code Climate secret key
+        env:
+          CC_TEST_REPORTER_ID : ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-           token: ${{ secrets.CODECOV_TOKEN }}
+          coverageCommand: make test-coverage
