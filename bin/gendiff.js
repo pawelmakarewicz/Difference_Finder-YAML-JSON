@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import findDiff from '../lib/findDiffTwoJSONFiles.js';
+import findDiff from '../lib/findDiffTwoFlatFiles.js';
 
 const program = new Command();
 program

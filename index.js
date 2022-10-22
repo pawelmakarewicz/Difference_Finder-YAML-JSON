@@ -1,3 +1,3 @@
-import findDiff from './lib/findDiffTwoJSONFiles.js';
+import findDiff from './lib/findDiffTwoFlatFiles.js';
 
 export default findDiff;
