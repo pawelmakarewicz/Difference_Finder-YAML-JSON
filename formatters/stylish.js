@@ -48,5 +48,3 @@ const showDifAsObject = (data) => {
 };
 
 export default showDifAsObject;
-// console.log(showDifAsObject(findDiff('./__fixtures__/test3.yml', './__fixtures__/test4.yml')));
-// console.log(superWay.flatMap((item) => item));
