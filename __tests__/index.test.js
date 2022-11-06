@@ -7,36 +7,30 @@ import findDiff from '../index.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
-const expectedFlatting = readFileSync(getFixturePath('testResultFiles.txt'), 'utf8');
-const expectedPlainFormat = readFileSync(getFixturePath('testResultPlainFormat.txt'), 'utf8');
-const expectedJsonFormat = readFileSync(getFixturePath('testResultJsonFormat.txt'), 'utf8');
+const expectedStylishFormat = readFileSync(getFixturePath('expectedResultStylish.txt'), 'utf8');
+const expectedPlainFormat = readFileSync(getFixturePath('expectedResultPlain.txt'), 'utf8');
+const expectedJsonFormat = readFileSync(getFixturePath('expectedResultJSON.txt'), 'utf8');
+const firstJSON = getFixturePath('fileTest1.json');
+const secondJSON = getFixturePath('fileTest2.json');
+const firstYML = getFixturePath('fileTest1.yml');
+const secondYML = getFixturePath('fileTest2.yml');
 
-test('Test JSON files format - as Object', () => {
-  const file1 = getFixturePath('test1.json');
-  const file2 = getFixturePath('test2.json');
-  expect((findDiff(file1, file2))).toEqual(expectedFlatting);
+test('1Test JSON files format - as Object', () => {
+  expect((findDiff(firstJSON, secondJSON))).toEqual(expectedStylishFormat);
 });
 
-test('Test YML files format - as Object', () => {
-  const file3 = getFixturePath('test3.yml');
-  const file4 = getFixturePath('test4.yml');
-  expect((findDiff(file3, file4))).toEqual(expectedFlatting);
+test('2Test YML files format - as Object', () => {
+  expect((findDiff(firstYML, secondYML))).toEqual(expectedStylishFormat);
 });
 
-test('Test YML and JSON files format - as Object', () => {
-  const file1 = getFixturePath('test1.json');
-  const file4 = getFixturePath('test4.yml');
-  expect(findDiff(file1, file4)).toEqual(expectedFlatting);
+test('3Test YML and JSON files format - as Object', () => {
+  expect(findDiff(firstYML, secondJSON)).toEqual(expectedStylishFormat);
 });
 
-test('Test JSON files format - plain', () => {
-  const file1 = getFixturePath('test1.json');
-  const file2 = getFixturePath('test2.json');
-  expect(findDiff(file1, file2, 'plain')).toEqual(expectedPlainFormat);
+test('4Test JSON files format - plain', () => {
+  expect(findDiff(firstJSON, secondJSON, 'plain')).toEqual(expectedPlainFormat);
 });
 
-test('Test JSON files format - JSON', () => {
-  const file1 = getFixturePath('test1.json');
-  const file2 = getFixturePath('test2.json');
-  expect(findDiff(file1, file2, 'json')).toEqual(expectedJsonFormat);
+test('5Test JSON files format - JSON', () => {
+  expect(findDiff(firstJSON, secondJSON, 'json')).toEqual(expectedJsonFormat);
 });
